@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nam Cao — Infographic Story</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6efe4;
+      --bg2:#efe2d0;
+      --card:rgba(255,255,255,.74);
+      --cardStrong:rgba(255,255,255,.90);
+      --ink:#181410;
+      --muted:#66594c;
+      --line:rgba(24,20,16,.10);
+      --accent:#b44131;
+      --accent2:#d06a4b;
+      --shadow:0 24px 70px rgba(44,26,14,.12);
+      --shadow2:0 14px 28px rgba(44,26,14,.08);
+      --radius:30px;
+      --max:1240px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(255,255,255,.85), transparent 45%),
+        radial-gradient(900px 520px at 85% 15%, rgba(180,65,49,.12), transparent 42%),
+        radial-gradient(700px 500px at 40% 85%, rgba(208,106,75,.10), transparent 42%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.16;
+      mix-blend-mode:multiply;
+      background-image:
+        linear-gradient(rgba(0,0,0,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.02) 1px, transparent 1px);
+      background-size:28px 28px, 28px 28px;
+      z-index:0;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.14;
+      background-image:url("assets/paper-fibers.png");
+      background-size:420px 420px;
+      mix-blend-mode:multiply;
+      z-index:0;
+    }
+
+    .progress{
+      position:fixed;
+      top:0; left:0;
+      height:4px;
+      width:0%;
+      z-index:9999;
+      background:linear-gradient(90deg, var(--accent), var(--accent2));
+      box-shadow:0 0 18px rgba(180,65,49,.28);
+    }
+
+    .spotlight{
+      position:fixed;
+      width:420px;
+      height:420px;
+      border-radius:50%;
+      pointer-events:none;
+      background:radial-gradient(circle, rgba(180,65,49,.12), transparent 62%);
+      mix-blend-mode:multiply;
+      filter:blur(8px);
+      transform:translate(-50%, -50%);
+      z-index:1;
+      opacity:.9;
+    }
+
+    .container{
+      width:min(var(--max), calc(100% - 34px));
+      margin:0 auto;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:grid;
+      grid-template-columns:1.06fr .94fr;
+      gap:28px;
+      align-items:center;
+      padding:28px 0 34px;
+      position:relative;
+    }
+
+    .hero::before,
+    .hero::after{
+      content:"";
+      position:absolute;
+      pointer-events:none;
+      border-radius:50%;
+      filter:blur(18px);
+      z-index:0;
+    }
+
+    .hero::before{
+      inset:-20px auto auto -120px;
+      width:260px;
+      height:260px;
+      background:radial-gradient(circle, rgba(180,65,49,.18), transparent 68%);
+    }
+
+    .hero::after{
+      right:-120px;
+      bottom:30px;
+      width:320px;
+      height:320px;
+      background:radial-gradient(circle, rgba(208,106,75,.14), transparent 70%);
+    }
+
+    .hero-left{
+      padding:24px 0;
+      position:relative;
+      z-index:2;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 16px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.52);
+      backdrop-filter:blur(16px);
+      box-shadow:var(--shadow2);
+      color:var(--muted);
+      font-size:.88rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:20px;
+    }
+
+    .eyebrow .dot{
+      width:8px;height:8px;border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 7px rgba(180,65,49,.10);
+    }
+
+    .hero h1{
+      font-family:"Playfair Display", Georgia, "Times New Roman", serif;
+      font-size:clamp(4rem, 8.2vw, 7.6rem);
+      line-height:.88;
+      letter-spacing:-.05em;
+      margin-bottom:18px;
+      max-width:8ch;
+    }
+
+    .hero-copy{
+      font-size:1.06rem;
+      line-height:1.85;
+      color:var(--muted);
+      max-width:58ch;
+      margin-bottom:26px;
+    }
+
+    .hero-copy::first-letter{
+      font-family:"Playfair Display", Georgia, "Times New Roman", serif;
+      float:left;
+      font-size:3.5rem;
+      line-height:.9;
+      margin-right:10px;
+      color:var(--accent);
+    }
+
+    .meta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .chip{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.60);
+      box-shadow:var(--shadow2);
+      color:#32281f;
+      white-space:nowrap;
+      font-size:.95rem;
+    }
+
+    .hero-right{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      min-height:640px;
+      z-index:2;
+    }
+
+    .portrait-wrap{
+      position:relative;
+      width:min(100%, 520px);
+      aspect-ratio:.84/1;
+    }
+
+    .portrait-wrap::before{
+      content:"";
+      position:absolute;
+      inset:-54px -58px auto auto;
+      width:180px;
+      height:180px;
+      background:url("assets/ink-splash.png") center/contain no-repeat;
+      opacity:.14;
+      pointer-events:none;
+      z-index:-1;
+      transform:rotate(8deg);
+    }
+
+    .portrait-wrap::after{
+      content:"";
+      position:absolute;
+      left:-70px;
+      top:18px;
+      width:180px;
+      height:180px;
+      background:url("assets/paper-mark.png") center/contain no-repeat;
+      opacity:.10;
+      pointer-events:none;
+      z-index:-1;
+      transform:rotate(-10deg);
+    }
+
+    .portrait-back,
+    .portrait-mid,
+    .portrait-front{
+      position:absolute;
+      inset:0;
+      border-radius:40px;
+    }
+
+    .portrait-back{
+      transform:translate(28px, 26px) rotate(2deg);
+      background:linear-gradient(160deg, rgba(180,65,49,.22), rgba(255,255,255,.16));
+      box-shadow:var(--shadow);
+    }
+
+    .portrait-mid{
+      transform:translate(14px, 12px) rotate(1deg);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255,255,255,.92), rgba(255,255,255,.12)),
+        linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.28));
+      border:1px solid rgba(255,255,255,.55);
+      box-shadow:var(--shadow);
+    }
+
+    .portrait-front{
+      background:
+        linear-gradient(180deg, rgba(10,8,6,.04), rgba(10,8,6,.22)),
+        url("assets/namcao.png") center top/cover no-repeat;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.70);
+      box-shadow:0 26px 70px rgba(44,26,14,.18);
+    }
+
+    .portrait-front::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:url("assets/vintage-frame.svg") center/contain no-repeat;
+      opacity:.18;
+      pointer-events:none;
+      z-index:1;
+    }
+
+    .portrait-front::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, transparent 12%, rgba(0,0,0,.02) 56%, rgba(0,0,0,.22) 100%),
+        radial-gradient(circle at 50% 0%, transparent, rgba(0,0,0,.08) 72%);
+      pointer-events:none;
+    }
+
+    .caption{
+      position:absolute;
+      left:-8px;
+      bottom:-18px;
+      max-width:270px;
+      padding:18px 18px 16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.74);
+      border:1px solid rgba(24,20,16,.08);
+      backdrop-filter:blur(16px);
+      box-shadow:var(--shadow2);
+      z-index:3;
+    }
+
+    .caption strong{
+      display:block;
+      font-family:"Playfair Display", Georgia, "Times New Roman", serif;
+      font-size:1.15rem;
+      margin-bottom:4px;
+    }
+
+    .caption span{
+      color:var(--muted);
+      line-height:1.55;
+      font-size:.95rem;
+    }
+
+    .section{
+      padding:28px 0 10px;
+      margin-bottom:8px;
+      transition:opacity .35s ease, transform .35s ease;
+      position:relative;
+    }
+
+    .section.dim{
+      opacity:.58;
+      transform:scale(.988);
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:18px;
+      margin-bottom:18px;
+      position:relative;
+      z-index:2;
+    }
+
+    .section-title{
+      font-family:"Playfair Display", Georgia, "Times New Roman", serif;
+      font-size:clamp(2rem, 3.4vw, 3rem);
+      line-height:1;
+      letter-spacing:-.03em;
+    }
+
+    .section-kicker{
+      max-width:44ch;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:.98rem;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:22px;
+      align-items:start;
+      position:relative;
+      z-index:2;
+    }
+
+    .card{
+      position:relative;
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.65);
+      border-radius:var(--radius);
+      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      transition:transform .35s ease, background .35s ease, box-shadow .35s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      background:var(--cardStrong);
+      box-shadow:0 26px 72px rgba(44,26,14,.15);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at top right, rgba(180,65,49,.08), transparent 38%);
+      pointer-events:none;
+    }
+
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      background:linear-gradient(125deg, rgba(255,255,255,.28), transparent 35%);
+      pointer-events:none;
+      opacity:.55;
+    }
+
+    .card .float-decor{
+      position:absolute;
+      pointer-events:none;
+      z-index:0;
+      opacity:.12;
+      background-size:contain;
+      background-repeat:no-repeat;
+      background-position:center;
+      filter:drop-shadow(0 10px 20px rgba(0,0,0,.08));
+    }
+
+    .float-decor.book{
+      right:-12px;
+      top:-10px;
+      width:138px;
+      height:138px;
+      background-image:url("assets/book-outline.png");
+      transform:rotate(8deg);
+    }
+
+    .float-decor.pen{
+      left:-14px;
+      bottom:-18px;
+      width:142px;
+      height:142px;
+      background-image:url("assets/pen-outline.png");
+      transform:rotate(-12deg);
+    }
+
+    .float-decor.quill{
+      right:-10px;
+      top:-12px;
+      width:132px;
+      height:132px;
+      background-image:url("assets/quill.png");
+      transform:rotate(10deg);
+    }
+
+    .float-decor.rosette{
+      right:-16px;
+      bottom:-16px;
+      width:160px;
+      height:160px;
+      background-image:url("assets/rosette.png");
+      transform:rotate(8deg);
+    }
+
+    .float-decor.ribbon{
+      right:-20px;
+      bottom:-10px;
+      width:168px;
+      height:168px;
+      background-image:url("assets/red-ribbon.png");
+      transform:rotate(10deg);
+      opacity:.11;
+    }
+
+    .float-decor.shelf{
+      left:-26px;
+      top:14px;
+      width:180px;
+      height:180px;
+      background-image:url("assets/book-stack.jpg");
+      transform:rotate(-8deg);
+      opacity:.10;
+    }
+
+    .float-decor.fold{
+      left:-18px;
+      top:18px;
+      width:150px;
+      height:150px;
+      background-image:url("assets/paper-fold.svg");
+      transform:rotate(-10deg);
+      opacity:.14;
+    }
+
+    .pad{padding:28px}
+    .pad-tight{padding:24px}
+
+    .sticky{
+      position:sticky;
+      top:24px;
+    }
+
+    .offset{
+      transform:translateY(18px);
+    }
+
+    .card-title{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
+      font-family:"Playfair Display", Georgia, "Times New Roman", serif;
+      font-size:1.55rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .icon-box{
+      width:36px;
+      height:36px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:rgba(180,65,49,.08);
+      border:1px solid rgba(180,65,49,.12);
+      flex:0 0 auto;
+    }
+
+    .icon-box svg{
+      width:19px;
+      height:19px;
+      fill:var(--accent);
+    }
+
+    .meta-list{
+      display:grid;
+      gap:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .meta-item{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:14px 14px;
+      border-radius:16px;
+      border:1px solid rgba(24,20,16,.06);
+      background:rgba(255,255,255,.46);
+      transition:transform .24s ease, background .24s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .meta-item::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg, transparent, rgba(180,65,49,.08));
+      opacity:0;
+      transition:.24s ease;
+    }
+
+    .meta-item:hover{
+      transform:translateX(4px);
+      background:rgba(255,255,255,.68);
+    }
+
+    .meta-item:hover::before{opacity:1}
+
+    .meta-k{
+      width:104px;
+      flex:0 0 auto;
+      color:var(--muted);
+      font-size:.92rem;
+      line-height:1.55;
+      position:relative;
+      z-index:1;
+    }
+
+    .meta-v{
+      flex:1;
+      line-height:1.7;
+      color:#231c17;
+      font-size:1rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .timeline{
+      position:relative;
+      display:grid;
+      gap:12px;
+      margin-top:8px;
+      z-index:1;
+    }
+
+    .timeline::before{
+      content:"";
+      position:absolute;
+      left:19px;
+      top:10px;
+      bottom:10px;
+      width:2px;
+      background:linear-gradient(180deg, rgba(180,65,49,.24), rgba(180,65,49,.06));
+      border-radius:999px;
+    }
+
+    .tl-item{
+      display:grid;
+      grid-template-columns:44px 1fr;
+      gap:14px;
+      padding:12px 10px 12px 0;
+      border-radius:18px;
+      transition:background .24s ease, transform .24s ease;
+    }
+
+    .tl-item:hover{
+      background:rgba(255,255,255,.40);
+      transform:translateX(3px);
+    }
+
+    .tl-dot{
+      width:18px;
+      height:18px;
+      margin-left:11px;
+      margin-top:4px;
+      border-radius:50%;
+      background:#fff;
+      border:3px solid var(--accent);
+      box-shadow:0 0 0 7px rgba(180,65,49,.08);
+      position:relative;
+      z-index:1;
+    }
+
+    .tl-year{
+      font-family:"Playfair Display", Georgia, "Times New Roman", serif;
+      font-size:1.12rem;
+      margin-bottom:4px;
+    }
+
+    .tl-text{
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .works{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:14px;
+    }
+
+    .work{
+      position:relative;
+      min-height:320px;
+      border-radius:22px;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.02)),
+        linear-gradient(180deg, rgba(255,255,255,.30), rgba(255,255,255,.10));
+      border:1px solid rgba(255,255,255,.56);
+      box-shadow:var(--shadow2);
+      transform-style:preserve-3d;
+      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      isolation:isolate;
+    }
+
+    .work:hover{
+      box-shadow:0 24px 70px rgba(44,26,14,.16);
+      border-color:rgba(180,65,49,.18);
+    }
+
+    .work-media{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(12,8,6,.08), rgba(12,8,6,.50)),
+        var(--img) center/cover no-repeat;
+      transform:scale(1.02);
+      transition:transform .35s ease, filter .35s ease;
+      filter:saturate(1.08) contrast(1.02);
+      z-index:0;
+    }
+
+    .work:hover .work-media{
+      transform:scale(1.08);
+    }
+
+    .work-glow{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 18% 15%, rgba(255,255,255,.24), transparent 28%),
+        linear-gradient(135deg, rgba(180,65,49,.20), transparent 45%);
+      mix-blend-mode:screen;
+      pointer-events:none;
+      opacity:.9;
+      z-index:1;
+    }
+
+    .work-body{
+      position:absolute;
+      inset:auto 0 0 0;
+      padding:18px 18px 16px;
+      color:#fff;
+      z-index:2;
+      background:linear-gradient(180deg, transparent, rgba(0,0,0,.48) 26%, rgba(0,0,0,.72));
+    }
+
+    .work-top{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:start;
+      margin-bottom:10px;
+    }
+
+    .work-name{
+      font-family:"Playfair Display", Georgia, "Times New Roman", serif;
+      font-size:1.3rem;
+      line-height:1.1;
+    }
+
+    .work-tag{
+      white-space:nowrap;
+      font-size:.76rem;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      padding:6px 9px;
+      border-radius:999px;
+      background:rgba(255,255,255,.15);
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(6px);
+    }
+
+    .work-desc{
+      color:rgba(255,255,255,.86);
+      line-height:1.65;
+      font-size:.95rem;
+      max-width:32ch;
+    }
+
+    .stat-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .stat{
+      padding:22px 18px;
+      border-radius:22px;
+      background:rgba(255,255,255,.60);
+      border:1px solid rgba(24,20,16,.06);
+      box-shadow:var(--shadow2);
+      transition:transform .24s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .stat::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg, transparent, rgba(180,65,49,.08));
+      opacity:0;
+      transition:.24s ease;
+    }
+
+    .stat:hover{
+      transform:translateY(-4px);
+    }
+
+    .stat:hover::before{opacity:1}
+
+    .stat-num{
+      font-family:"Playfair Display", Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      color:var(--accent);
+      margin-bottom:6px;
+      position:relative;
+      z-index:1;
+    }
+
+    .stat-label{
+      font-weight:700;
+      margin-bottom:6px;
+      color:#2b231b;
+      position:relative;
+      z-index:1;
+    }
+
+    .stat-desc{
+      color:var(--muted);
+      line-height:1.65;
+      font-size:.95rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .quote{
+      position:relative;
+      padding:34px 34px 30px;
+      border-radius:28px;
+      background:
+        radial-gradient(circle at top right, rgba(180,65,49,.10), transparent 30%),
+        linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.56));
+      border:1px solid rgba(180,65,49,.10);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .quote::before{
+      content:"";
+      position:absolute;
+      left:-90px;
+      bottom:-90px;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(208,106,75,.16), transparent 66%);
+      filter:blur(10px);
+    }
+
+    .quote::after{
+      content:"";
+      position:absolute;
+      right:-60px;
+      top:-50px;
+      width:200px;
+      height:200px;
+      border-radius:50%;
+      background:rgba(180,65,49,.10);
+      filter:blur(10px);
+    }
+
+    .quote-mark{
+      font-family:"Playfair Display", Georgia, "Times New Roman", serif;
+      color:var(--accent);
+      font-size:4rem;
+      line-height:1;
+      margin-bottom:4px;
+      position:relative;
+      z-index:1;
+    }
+
+    .quote-text{
+      font-family:"Playfair Display", Georgia, "Times New Roman", serif;
+      font-size:clamp(1.8rem, 3vw, 2.7rem);
+      line-height:1.35;
+      letter-spacing:-.02em;
+      max-width:18ch;
+      position:relative;
+      z-index:1;
+    }
+
+    .quote-sub{
+      margin-top:14px;
+      color:var(--muted);
+      line-height:1.75;
+      max-width:64ch;
+      font-size:1rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .section-bg{
+      position:absolute;
+      inset:-10px 0 auto 0;
+      height:100%;
+      pointer-events:none;
+      z-index:0;
+      opacity:.7;
+    }
+
+    .section-bg .blob{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(18px);
+      mix-blend-mode:multiply;
+    }
+
+    .section-bg .b1{
+      width:300px;
+      height:300px;
+      left:-110px;
+      top:20px;
+      background:radial-gradient(circle, rgba(180,65,49,.16), transparent 68%);
+    }
+
+    .section-bg .b2{
+      width:260px;
+      height:260px;
+      right:-90px;
+      bottom:20px;
+      background:radial-gradient(circle, rgba(208,106,75,.12), transparent 70%);
+    }
+
+    .section-decor{
+      position:absolute;
+      inset:auto auto -8px -16px;
+      width:150px;
+      height:150px;
+      pointer-events:none;
+      opacity:.14;
+      background:url("assets/quill.png") center/contain no-repeat;
+      transform:rotate(-12deg);
+      z-index:0;
+    }
+
+    .section-decor.right{
+      inset:auto -14px -8px auto;
+      transform:rotate(8deg);
+      background:url("assets/rosette.png") center/contain no-repeat;
+    }
+
+    .section-decor.ribbon{
+      inset:auto -10px -16px auto;
+      width:170px;
+      height:170px;
+      background:url("assets/red-ribbon.png") center/contain no-repeat;
+      transform:rotate(10deg);
+    }
+
+    .section-decor.shelf{
+      inset:12px auto auto -18px;
+      width:180px;
+      height:180px;
+      background:url("assets/book-stack.jpg") center/cover no-repeat;
+      transform:rotate(-8deg);
+      opacity:.10;
+    }
+
+    .section-decor.fold{
+      inset:16px -12px auto auto;
+      width:150px;
+      height:150px;
+      background:url("assets/paper-fold.svg") center/contain no-repeat;
+      transform:rotate(8deg);
+      opacity:.14;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+
+    .split-note{
+      display:grid;
+      gap:12px;
+    }
+
+    .note{
+      padding:16px 16px 15px;
+      border-radius:16px;
+      background:rgba(255,255,255,.48);
+      border:1px solid rgba(24,20,16,.06);
+      line-height:1.72;
+      color:#2a231c;
+    }
+
+    .note strong{
+      display:block;
+      font-family:"Playfair Display", Georgia, "Times New Roman", serif;
+      font-size:1.08rem;
+      margin-bottom:6px;
+      color:var(--ink);
+    }
+
+    .stack{
+      display:grid;
+      gap:14px;
+    }
+
+    .mini-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .mini{
+      padding:16px 15px;
+      border-radius:18px;
+      background:rgba(255,255,255,.54);
+      border:1px solid rgba(24,20,16,.06);
+      box-shadow:var(--shadow2);
+    }
+
+    .mini .k{
+      font-weight:800;
+      margin-bottom:6px;
+      color:#2b231b;
+    }
+
+    .mini .v{
+      color:var(--muted);
+      line-height:1.62;
+      font-size:.95rem;
+    }
+
+    .footer{
+      padding:38px 0 54px;
+      color:var(--muted);
+      text-align:center;
+      font-size:.95rem;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .nav{
+      position:fixed;
+      right:18px;
+      top:50%;
+      transform:translateY(-50%);
+      z-index:999;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      padding:10px;
+      border-radius:18px;
+      background:rgba(255,255,255,.45);
+      border:1px solid rgba(24,20,16,.08);
+      backdrop-filter:blur(16px);
+      box-shadow:var(--shadow2);
+    }
+
+    .nav a{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      display:block;
+      background:rgba(24,20,16,.18);
+      position:relative;
+      transition:transform .2s ease, background .2s ease;
+    }
+
+    .nav a::after{
+      content:attr(data-label);
+      position:absolute;
+      right:18px;
+      top:50%;
+      transform:translateY(-50%);
+      white-space:nowrap;
+      color:var(--ink);
+      font-size:.82rem;
+      background:rgba(255,255,255,.74);
+      border:1px solid rgba(24,20,16,.08);
+      padding:6px 10px;
+      border-radius:999px;
+      opacity:0;
+      pointer-events:none;
+      transition:.2s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active{
+      background:var(--accent);
+      transform:scale(1.25);
+    }
+
+    .nav a:hover::after{
+      opacity:1;
+      right:20px;
+    }
+
+    @media (max-width: 1080px){
+      .hero,
+      .grid-2,
+      .info-grid{
+        grid-template-columns:1fr;
+      }
+      .hero{
+        min-height:auto;
+        padding-top:30px;
+      }
+      .hero-right{
+        min-height:auto;
+      }
+      .portrait-wrap{
+        width:min(100%, 450px);
+      }
+      .sticky{position:static;top:auto}
+      .offset{transform:none}
+      .nav{display:none}
+      .stat-grid{grid-template-columns:1fr}
+      .mini-grid{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 720px){
+      .container{width:min(100%, calc(100% - 22px))}
+      .section-head{flex-direction:column;align-items:start}
+      .works{grid-template-columns:1fr}
+      .card-title{font-size:1.35rem}
+      .pad,.pad-tight{padding:22px}
+      .quote{padding:26px 22px}
+      .quote-text{max-width:none}
+      .caption{
+        left:10px;
+        right:10px;
+        bottom:10px;
+        max-width:none;
+      }
+      .section-decor{opacity:.09}
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="spotlight" id="spotlight"></div>
+
+  <nav class="nav" aria-label="Điều hướng">
+    <a href="#hero" data-label="Mở đầu"></a>
+    <a href="#info" data-label="Thông tin"></a>
+    <a href="#life" data-label="Cuộc đời"></a>
+    <a href="#works" data-label="Tác phẩm"></a>
+    <a href="#impact" data-label="Giá trị"></a>
+  </nav>
+
+  <main class="container">
+    <section class="hero reveal" id="hero">
+      <div class="hero-left">
+        <div class="eyebrow"><span class="dot"></span> Bài làm của Minh Huy</div>
+        <h1>Nam Cao</h1>
+        <p class="hero-copy">
+          Nhà văn hiện thực lớn của văn học Việt Nam, người đã khắc họa sâu sắc những kiếp người nghèo khổ,
+          bế tắc và đầy nhân phẩm. Văn chương của ông không phô trương, nhưng càng đọc càng thấy đau và thấm.
+        </p>
+        <div class="meta-row">
+          <div class="chip">Trần Hữu Tri</div>
+          <div class="chip">1915 — 1951</div>
+          <div class="chip">Hiện thực phê phán</div>
+          <div class="chip">Giá trị nhân đạo</div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="portrait-wrap reveal">
+          <div class="portrait-back"></div>
+          <div class="portrait-mid"></div>
+          <div class="portrait-front"></div>
+          <div class="caption">
+            <strong>Nam Cao</strong>
+            <span>Gương mặt trung tâm của văn xuôi hiện thực Việt Nam trước Cách mạng.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="info">
+      <div class="section-bg">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+      </div>
+      <div class="section-decor"></div>
+
+      <div class="section-head">
+        <div class="section-title">Thông tin chung</div>
+        <div class="section-kicker">
+          Mở đầu bằng hồ sơ tác giả, khái quát con đường đời và đặc điểm sáng tác để người xem bắt nhịp rất nhanh.
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <article class="card pad sticky">
+          <div class="float-decor book"></div>
+          <div class="float-decor pen"></div>
+
+          <div class="card-title">
+            <span class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2a7 7 0 0 0-4 12.74V22h8v-7.26A7 7 0 0 0 12 2Zm-2 19v-4h4v4h-4Zm2-10a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z"/>
+              </svg>
+            </span>
+            Hồ sơ tác giả
+          </div>
+
+          <div class="meta-list">
+            <div class="meta-item">
+              <div class="meta-k">Tên thật</div>
+              <div class="meta-v">Trần Hữu Tri</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-k">Bút danh</div>
+              <div class="meta-v">Nam Cao</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-k">Sinh — mất</div>
+              <div class="meta-v">1915 — 1951</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-k">Quê quán</div>
+              <div class="meta-v">Làng Đại Hoàng, huyện Lý Nhân, tỉnh Hà Nam</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-k">Thể loại mạnh</div>
+              <div class="meta-v">Truyện ngắn, tiểu thuyết, bút ký, phóng sự</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-k">Khuynh hướng</div>
+              <div class="meta-v">Hiện thực phê phán, giàu tinh thần nhân đạo</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card pad-tight offset">
+          <div class="float-decor fold"></div>
+
+          <div class="card-title">
+            <span class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2a8 8 0 0 0-8 8c0 3.86 2.92 7.03 6.67 7.46V22h2.66v-4.54C17.08 17.03 20 13.86 20 10a8 8 0 0 0-8-8Zm-1 13.38C8.06 14.9 6 12.72 6 10a6 6 0 0 1 12 0c0 2.72-2.06 4.9-5 5.38V8h-2v7.38Z"/>
+              </svg>
+            </span>
+            Tóm tắt nhanh
+          </div>
+
+          <div class="split-note">
+            <div class="note">
+              <strong>Xuất thân và trải nghiệm</strong>
+              Nam Cao trưởng thành trong một bối cảnh nghèo khó, va chạm nhiều với đời sống lam lũ của người nông dân và cả nỗi chật vật của lớp trí thức nghèo. Chính trải nghiệm ấy làm nên giọng văn vừa lạnh, vừa đau, vừa thấm.
+            </div>
+            <div class="note">
+              <strong>Điểm nổi bật</strong>
+              Ông không chỉ dựng lên số phận khốn khổ mà còn truy đến tận cùng phần người: danh dự, nhân phẩm, lòng tự trọng, nỗi bế tắc và khát vọng được sống tử tế.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="life">
+      <div class="section-bg">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+      </div>
+      <div class="section-decor right"></div>
+
+      <div class="section-head">
+        <div class="section-title">Cuộc đời</div>
+        <div class="section-kicker">
+          Timeline này nói rõ nguồn gốc, hoàn cảnh và bước ngoặt sáng tác để phần infographic có chiều sâu hơn.
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card pad sticky">
+          <div class="float-decor shelf"></div>
+
+          <div class="card-title">
+            <span class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9Zm1 13h-2V7h2Zm0 4h-2v-2h2Z"/>
+              </svg>
+            </span>
+            Dòng thời gian
+          </div>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div>
+                <div class="tl-year">1915</div>
+                <div class="tl-text">Sinh tại Hà Nam trong một gia đình nông dân nghèo.</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div>
+                <div class="tl-year">Trước 1945</div>
+                <div class="tl-text">Làm nhiều nghề để mưu sinh, từng dạy học, viết báo, sống giữa những lo toan cơm áo.</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div>
+                <div class="tl-year">1941 — 1944</div>
+                <div class="tl-text">Giai đoạn sáng tác mạnh, liên tiếp có các tác phẩm làm nên tên tuổi.</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div>
+                <div class="tl-year">Sau 1945</div>
+                <div class="tl-text">Tham gia kháng chiến, gắn văn chương với cách mạng và đời sống dân tộc.</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div>
+                <div class="tl-year">1951</div>
+                <div class="tl-text">Hy sinh trong kháng chiến, để lại di sản văn chương có sức sống lâu bền.</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card pad-tight offset">
+          <div class="float-decor quill"></div>
+
+          <div class="card-title">
+            <span class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 5h16v14H4V5Zm2 2v10h12V7H6Zm2 2h8v2H8V9Zm0 4h5v2H8v-2Z"/>
+              </svg>
+            </span>
+            Bối cảnh sống
+          </div>
+
+          <div class="stack">
+            <div class="note">
+              <strong>Tuổi trẻ và mưu sinh</strong>
+              Những năm tháng sống trong thiếu thốn đã đặt Nam Cao rất gần với thân phận người nghèo, giúp ông nhìn hiện thực bằng con mắt trực diện và không tô vẽ.
+            </div>
+            <div class="mini-grid">
+              <div class="mini">
+                <div class="k">Tác động xã hội</div>
+                <div class="v">Thực dân, phong kiến và sự bần cùng hóa đã tạo ra những bi kịch người nông dân.</div>
+              </div>
+              <div class="mini">
+                <div class="k">Tác động cá nhân</div>
+                <div class="v">Sự thất vọng, ngột ngạt của đời sống làm ông đặc biệt nhạy với nỗi bế tắc tinh thần.</div>
+              </div>
+              <div class="mini">
+                <div class="k">Khu vực quan sát</div>
+                <div class="v">Nông thôn nghèo và đời sống trí thức tiểu tư sản.</div>
+              </div>
+              <div class="mini">
+                <div class="k">Tầm nhìn</div>
+                <div class="v">Không chỉ nhìn “cái khổ”, mà nhìn cách con người bị cái khổ bẻ cong.</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="works">
+      <div class="section-bg">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+      </div>
+      <div class="section-decor ribbon"></div>
+
+      <div class="section-head">
+        <div class="section-title">Tác phẩm tiêu biểu</div>
+        <div class="section-kicker">
+          Gallery tác phẩm được đặt lớn hơn để trang nhìn giống triển lãm văn học thay vì một bài tập khô.
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card pad-tight">
+          <div class="float-decor book"></div>
+
+          <div class="card-title">
+            <span class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 2h9l5 5v15H6V2Zm8 1.5V8h4.5L14 3.5ZM8 11h8v2H8v-2Zm0 4h8v2H8v-2Z"/>
+              </svg>
+            </span>
+            Gallery tác phẩm
+          </div>
+
+          <div class="works">
+            <article class="work" style="--img:url('assets/chipheo.webp')">
+              <div class="work-media"></div>
+              <div class="work-glow"></div>
+              <div class="work-body">
+                <div class="work-top">
+                  <div class="work-name">Chí Phèo</div>
+                  <div class="work-tag">1941</div>
+                </div>
+                <div class="work-desc">Bi kịch tha hóa và khát vọng trở lại làm người.</div>
+              </div>
+            </article>
+
+            <article class="work" style="--img:url('assets/laohac.jpg')">
+              <div class="work-media"></div>
+              <div class="work-glow"></div>
+              <div class="work-body">
+                <div class="work-top">
+                  <div class="work-name">Lão Hạc</div>
+                  <div class="work-tag">1943</div>
+                </div>
+                <div class="work-desc">Nỗi đau của người nông dân nghèo giữ gìn nhân phẩm đến tận cùng.</div>
+              </div>
+            </article>
+
+            <article class="work" style="--img:url('assets/doithua.jpg')">
+              <div class="work-media"></div>
+              <div class="work-glow"></div>
+              <div class="work-body">
+                <div class="work-top">
+                  <div class="work-name">Đời thừa</div>
+                  <div class="work-tag">1943</div>
+                </div>
+                <div class="work-desc">Bi kịch của người trí thức sống giữa lý tưởng và bế tắc.</div>
+              </div>
+            </article>
+
+            <article class="work" style="--img:url('assets/songmon.jpg')">
+              <div class="work-media"></div>
+              <div class="work-glow"></div>
+              <div class="work-body">
+                <div class="work-top">
+                  <div class="work-name">Sống mòn</div>
+                  <div class="work-tag">1944</div>
+                </div>
+                <div class="work-desc">Một đời sống quẩn quanh, mệt mỏi, bào mòn niềm tin và hoài bão.</div>
+              </div>
+            </article>
+          </div>
+        </article>
+
+        <article class="card pad sticky offset">
+          <div class="float-decor rosette"></div>
+
+          <div class="card-title">
+            <span class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2l2.7 5.5L20.5 9 16 13.3 17.1 19 12 16.3 6.9 19 8 13.3 3.5 9l5.8-1.5L12 2Z"/>
+              </svg>
+            </span>
+            Nội dung nổi bật
+          </div>
+
+          <div class="stack">
+            <div class="note">
+              <strong>Chủ đề trung tâm</strong>
+              Người nông dân bị áp bức, người trí thức nghèo bế tắc, và những thân phận bị cuộc đời xô đẩy đến bờ vực của nhân phẩm.
+            </div>
+            <div class="mini-grid">
+              <div class="mini">
+                <div class="k">Chí Phèo</div>
+                <div class="v">Tiếng kêu đau đớn của một con người bị tước mất quyền làm người.</div>
+              </div>
+              <div class="mini">
+                <div class="k">Lão Hạc</div>
+                <div class="v">Nỗi đau và sự trong sạch của người nông dân nghèo.</div>
+              </div>
+              <div class="mini">
+                <div class="k">Đời thừa</div>
+                <div class="v">Bi kịch của người nghệ sĩ và trí thức sống trong mâu thuẫn nội tâm.</div>
+              </div>
+              <div class="mini">
+                <div class="k">Sống mòn</div>
+                <div class="v">Sự mỏi mòn của đời sống quẩn quanh, bế tắc.</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="impact">
+      <div class="section-bg">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+      </div>
+      <div class="section-decor right"></div>
+
+      <div class="section-head">
+        <div class="section-title">Phong cách & giá trị</div>
+        <div class="section-kicker">
+          Phần kết cần đọng lại bằng một câu trung tâm thật mạnh, rồi mở ra các ý giá trị.
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card pad">
+          <div class="card-title">
+            <span class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2l2.7 5.5L20.5 9 16 13.3 17.1 19 12 16.3 6.9 19 8 13.3 3.5 9l5.8-1.5L12 2Z"/>
+              </svg>
+            </span>
+            Đặc điểm nghệ thuật
+          </div>
+
+          <div class="mini-grid">
+            <div class="mini">
+              <div class="k">Hiện thực sắc lạnh</div>
+              <div class="v">Không né tránh sự thật, không làm dịu hiện thực.</div>
+            </div>
+            <div class="mini">
+              <div class="k">Phân tích tâm lý</div>
+              <div class="v">Đi sâu vào những chuyển động tinh vi trong nội tâm nhân vật.</div>
+            </div>
+            <div class="mini">
+              <div class="k">Ngôn ngữ đời thường</div>
+              <div class="v">Giản dị, tự nhiên mà thấm, giàu nhịp điệu của đời sống.</div>
+            </div>
+            <div class="mini">
+              <div class="k">Tinh thần nhân đạo</div>
+              <div class="v">Luôn tin rằng con người vẫn có phần tốt đẹp để hướng tới.</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card pad-tight offset">
+          <div class="float-decor ribbon"></div>
+
+          <div class="quote">
+            <div class="quote-mark">“</div>
+            <div class="quote-text">Nam Cao không chỉ viết về cái khổ, mà viết về con người trong cái khổ.</div>
+            <div class="quote-sub">
+              Cái đắt của Nam Cao nằm ở chỗ ông nhìn thấy trong nghèo đói không chỉ là miếng cơm, mà là phẩm giá,
+              nỗi nhục, khát vọng sống tử tế và cả những vết thương tinh thần rất người.
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div style="height:22px"></div>
+
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-num">01</div>
+          <div class="stat-label">Gương mặt lớn của văn xuôi hiện thực</div>
+          <div class="stat-desc">Một trong những tên tuổi tiêu biểu nhất của văn học Việt Nam trước Cách mạng.</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">02</div>
+          <div class="stat-label">Bậc thầy truyện ngắn</div>
+          <div class="stat-desc">Truyện ngắn Nam Cao có cấu trúc chặt, chi tiết giàu sức gợi và chiều sâu tâm lý lớn.</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">03</div>
+          <div class="stat-label">Giá trị nhân đạo bền vững</div>
+          <div class="stat-desc">Di sản của ông vẫn được học, đọc và phân tích vì tính người rất mạnh.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">Bài làm của Minh Huy · Nam Cao Infographic</div>
+  </main>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("active");
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    const progress = document.getElementById("progress");
+    const spotlight = document.getElementById("spotlight");
+    const sections = document.querySelectorAll(".section");
+    const navLinks = document.querySelectorAll(".nav a");
+
+    window.addEventListener("scroll", () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const max = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      progress.style.width = (scrollTop / max) * 100 + "%";
+
+      const viewportCenter = scrollTop + window.innerHeight * 0.55;
+      sections.forEach(sec => {
+        const top = sec.offsetTop;
+        const bottom = top + sec.offsetHeight;
+        if (viewportCenter >= top && viewportCenter < bottom) sec.classList.remove("dim");
+        else sec.classList.add("dim");
+      });
+
+      navLinks.forEach(a => a.classList.remove("active"));
+      const idx =
+        viewportCenter < sections[1].offsetTop ? 0 :
+        viewportCenter < sections[2].offsetTop ? 1 :
+        viewportCenter < sections[3].offsetTop ? 2 :
+        viewportCenter < sections[4].offsetTop ? 3 : 4;
+      if (navLinks[idx]) navLinks[idx].classList.add("active");
+    });
+
+    window.addEventListener("pointermove", (e) => {
+      spotlight.style.left = e.clientX + "px";
+      spotlight.style.top = e.clientY + "px";
+    });
+
+    document.querySelectorAll(".work").forEach(card => {
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        const rx = ((y / r.height) - 0.5) * -8;
+        const ry = ((x / r.width) - 0.5) * 10;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+      });
+      card.addEventListener("pointerleave", () => {
+        card.style.transform = "";
+      });
+    });
+  </script>
+</body>
+</html>
